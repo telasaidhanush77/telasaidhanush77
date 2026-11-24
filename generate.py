@@ -1,4 +1,4 @@
-"""Profile README SVGs v3 — sci-fi HUD. usage: gen3.py OUT_DIR PHOTO.jpg FONT_DIR
+"""Profile README SVGs v4 — sci-fi HUD (globe, glitch, iridescent frame). usage: gen3.py OUT_DIR PHOTO.jpg FONT_DIR
 CSS-only animation; fonts + photo embedded; nothing external (GitHub renders via <img>)."""
 import base64, math, pathlib, sys
 
@@ -23,6 +23,18 @@ BASE = (".d{font-family:OR,'Segoe UI',sans-serif;font-weight:700}.d5{font-family
         "@keyframes flick{0%,100%{opacity:1}92%{opacity:1}93%{opacity:.35}94%{opacity:1}96%{opacity:.6}97%{opacity:1}}.flick{animation:flick 6s infinite}"
         "@keyframes dash{to{stroke-dashoffset:-400}}.trace{stroke-dasharray:36 364;animation:dash 3.2s linear infinite}"
         "@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}"
+        # v4: iridescent frame, scan bar, wireframe globe, photo glitch, equalizer
+        f"@keyframes ir1{{0%,100%{{stop-color:{CYAN}}}33%{{stop-color:#9b5cff}}66%{{stop-color:{RED}}}}}"
+        f"@keyframes ir2{{0%,100%{{stop-color:#9b5cff}}33%{{stop-color:{RED}}}66%{{stop-color:{CYAN}}}}}"
+        f"@keyframes ir3{{0%,100%{{stop-color:{RED}}}33%{{stop-color:{CYAN}}}66%{{stop-color:#9b5cff}}}}"
+        ".ir1{animation:ir1 8s linear infinite}.ir2{animation:ir2 8s linear infinite}.ir3{animation:ir3 8s linear infinite}"
+        "@keyframes sbar{from{transform:translateY(-120px)}to{transform:translateY(var(--sh))}}.sbar{animation:sbar 7s linear infinite}"
+        "@keyframes lon{0%{transform:scaleX(1)}50%{transform:scaleX(-1)}100%{transform:scaleX(1)}}.lon{animation:lon 14s ease-in-out infinite}"
+        "@keyframes gs{0%,86%,100%{transform:none;opacity:0}87%{transform:translateX(-9px);opacity:1}89%{transform:translateX(7px);opacity:1}91%{transform:translateX(-3px);opacity:1}92%{opacity:0}}"
+        ".gs1{animation:gs 5s steps(1) infinite}.gs2{animation:gs 5s steps(1) infinite;animation-delay:-.3s}"
+        "@keyframes eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}.eq{animation:eq 1.2s ease-in-out infinite}"
+        "@keyframes tick{to{transform:translateX(var(--tw))}}.tick{animation:tick 6s ease-in-out infinite alternate}"
+        "@keyframes ind{from{transform:translateX(-70px)}to{transform:translateX(230px)}}.ind{animation:ind 2.2s cubic-bezier(.6,0,.4,1) infinite}"
         "@media (prefers-reduced-motion:reduce){*{animation:none!important}}")
 
 def chamfer(x, y, w, h, c=16, **kw):
@@ -34,7 +46,7 @@ def brackets(x, y, w, h, col, s=14):
     p = (f"M{x},{y+s}V{y}H{x+s} M{x+w-s},{y}H{x+w}V{y+s} M{x+w},{y+h-s}V{y+h}H{x+w-s} M{x+s},{y+h}H{x}V{y+h-s}")
     return f'<path d="{p}" fill="none" stroke="{col}" stroke-width="2"/>'
 
-def frame(w, h, body, css="", title=None, tag=None):
+def frame(w, h, body, css="", title=None, tag=None, rule=True):
     head = ""
     if title:
         head = (f'<text class="mono" x="32" y="40" font-size="12" letter-spacing="3" fill="{CYAN}">{tag}</text>'
@@ -44,6 +56,10 @@ def frame(w, h, body, css="", title=None, tag=None):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img">
 <defs>
 <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{CYAN}"/><stop offset=".5" stop-color="{BLUE}"/><stop offset="1" stop-color="{RED}"/></linearGradient>
+<linearGradient id="gi" x1="0" y1="0" x2="1" y2="1"><stop class="ir1" offset="0" stop-color="{CYAN}"/><stop class="ir2" offset=".5" stop-color="#9b5cff"/><stop class="ir3" offset="1" stop-color="{RED}"/></linearGradient>
+<linearGradient id="gn" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#bfeeff"/><stop offset="1" stop-color="{CYAN}"/></linearGradient>
+<linearGradient id="sb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{CYAN}" stop-opacity="0"/><stop offset=".92" stop-color="{CYAN}" stop-opacity=".07"/><stop offset="1" stop-color="{CYAN}" stop-opacity=".35"/></linearGradient>
+<filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .7  0 0 0 0 .85  0 0 0 0 1  0 0 0 .07 0"/></filter>
 <linearGradient id="gh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{CYAN}"/><stop offset="1" stop-color="{BLUE}"/></linearGradient>
 <radialGradient id="gb"><stop offset="0" stop-color="{BLUE}" stop-opacity=".28"/><stop offset="1" stop-color="{BLUE}" stop-opacity="0"/></radialGradient>
 <radialGradient id="gr"><stop offset="0" stop-color="{RED}" stop-opacity=".18"/><stop offset="1" stop-color="{RED}" stop-opacity="0"/></radialGradient>
@@ -55,10 +71,32 @@ def frame(w, h, body, css="", title=None, tag=None):
 </defs>
 <style>{fontcss()}{BASE}{css}</style>
 <g clip-path="url(#fr)"><rect width="{w}" height="{h}" fill="{BG}"/><rect width="{w}" height="{h}" fill="url(#grid)"/>
-<circle cx="{w*.15:.0f}" cy="0" r="{h*.95:.0f}" fill="url(#gb)"/><circle cx="{w*.9:.0f}" cy="{h}" r="{h*.95:.0f}" fill="url(#gr)"/></g>
-{chamfer(1, 1, w-2, h-2, 25, fill="none", stroke="url(#g)", stroke_width=1.5, stroke_opacity=.7)}
+<circle cx="{w*.15:.0f}" cy="0" r="{h*.95:.0f}" fill="url(#gb)"/><circle cx="{w*.9:.0f}" cy="{h}" r="{h*.95:.0f}" fill="url(#gr)"/>
+<rect width="{w}" height="{h}" filter="url(#grain)"/>
+<rect class="sbar" width="{w}" height="120" fill="url(#sb)" style="--sh:{h}px"/></g>
+{chamfer(1, 1, w-2, h-2, 25, fill="none", stroke="url(#gi)", stroke_width=2, stroke_opacity=.9)}
 {brackets(10, 10, w-20, h-20, CYAN)}
+{ruler(w, h) if rule else ""}
 {head}{body}</svg>'''
+
+def ruler(w, h):
+    """HUD tick ruler along the bottom edge with a sliding marker."""
+    x0, x1, y = 44, w - 44, h - 15
+    ticks = "".join(f"M{x},{y}v{-6 if (x - x0) % 80 == 0 else -3}" for x in range(x0, x1 + 1, 16))
+    return (f'<path d="{ticks}" stroke="{CYAN}" stroke-opacity=".35" stroke-width="1"/>'
+            f'<path class="tick" d="M{x0},{y-10}l5,6 5,-6z" fill="{CYAN}" style="--tw:{x1 - x0 - 10}px"/>')
+
+def globe(cx, cy, R, col=CYAN, op=.3):
+    """Wireframe globe: static latitudes + meridians whose scaleX oscillates to fake rotation."""
+    lat = "".join(f'<ellipse cx="{cx}" cy="{cy + R*f:.1f}" rx="{R*math.sqrt(1 - f*f):.1f}" ry="{R*math.sqrt(1 - f*f)*.16:.1f}"/>' for f in (-.7, -.35, 0, .35, .7))
+    lon = "".join(f'<ellipse class="lon" cx="{cx}" cy="{cy}" rx="{R}" ry="{R}" style="transform-origin:{cx}px {cy}px;animation-delay:-{i*14/12:.2f}s"/>' for i in range(6))
+    return (f'<g fill="none" stroke="{col}" stroke-opacity="{op}" stroke-width="1"><circle cx="{cx}" cy="{cy}" r="{R}" stroke-opacity="{op*1.6:.2f}"/>'
+            f'{lat}{lon}</g>')
+
+def eq(x, y, n, w, h, col, gap=3):
+    """Decorative equalizer bars, bottom-anchored."""
+    return "".join(f'<rect class="eq" x="{x + i*(w+gap)}" y="{y - h}" width="{w}" height="{h}" fill="{col}" opacity=".75" '
+                   f'style="transform-origin:{x + i*(w+gap)}px {y}px;animation-delay:-{(i*0.37) % 1.2:.2f}s;animation-duration:{0.9 + (i*7 % 5)*0.15:.2f}s"/>' for i in range(n))
 
 def icon(paths, x, y, size, col):
     return (f'<g transform="translate({x} {y}) scale({size/24:.3f})" fill="none" stroke="{col}" stroke-width="2" '
@@ -79,15 +117,21 @@ def hexpts(cx, cy, r, flat=False):
     a0 = 0 if flat else 30
     return " ".join(f"{cx + r*math.cos(math.radians(a0 + 60*i)):.1f},{cy + r*math.sin(math.radians(a0 + 60*i)):.1f}" for i in range(6))
 
-def hologram(cx, cy, r, cid):
+def hologram(cx, cy, r, cid, gr=40):
     """Photo in a hexagon with scanlines, a moving scan beam and orbit rings."""
+    s1, s2 = cy - r * .35, cy + r * .2
     return f'''<g>
+{globe(cx, cy, r + gr)}
 <polygon points="{hexpts(cx, cy, r+8)}" fill="url(#g)" opacity=".45" filter="url(#blur)"/>
 <g class="ring" style="transform-origin:{cx}px {cy}px"><ellipse cx="{cx}" cy="{cy}" rx="{r+46}" ry="{(r+46)*.3:.0f}" fill="none" stroke="{CYAN}" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="2 7" transform="rotate(-18 {cx} {cy})"/></g>
 <g class="ringr" style="transform-origin:{cx}px {cy}px"><ellipse cx="{cx}" cy="{cy}" rx="{r+30}" ry="{(r+30)*.36:.0f}" fill="none" stroke="{RED}" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="14 10" transform="rotate(24 {cx} {cy})"/></g>
 <clipPath id="{cid}"><polygon points="{hexpts(cx, cy, r)}"/></clipPath>
 <g clip-path="url(#{cid})">
-<image href="{PHOTO}" x="{cx-r}" y="{cy-r}" width="{2*r}" height="{2*r}"/>
+<image id="{cid}i" href="{PHOTO}" x="{cx-r}" y="{cy-r}" width="{2*r}" height="{2*r}"/>
+<clipPath id="{cid}a"><rect x="{cx-r}" y="{s1:.0f}" width="{2*r}" height="{r*.12:.0f}"/></clipPath>
+<clipPath id="{cid}b"><rect x="{cx-r}" y="{s2:.0f}" width="{2*r}" height="{r*.07:.0f}"/></clipPath>
+<g class="gs1" clip-path="url(#{cid}a)"><use href="#{cid}i"/><rect x="{cx-r}" y="{s1:.0f}" width="{2*r}" height="{r*.12:.0f}" fill="{RED}" opacity=".35"/></g>
+<g class="gs2" clip-path="url(#{cid}b)"><use href="#{cid}i"/><rect x="{cx-r}" y="{s2:.0f}" width="{2*r}" height="{r*.07:.0f}" fill="{CYAN}" opacity=".45"/></g>
 <rect x="{cx-r}" y="{cy-r}" width="{2*r}" height="{2*r}" fill="{BLUE}" opacity=".12"/>
 <rect x="{cx-r}" y="{cy-r}" width="{2*r}" height="{2*r}" fill="url(#scan)"/>
 <rect class="beam" x="{cx-r}" y="{cy-r-30}" width="{2*r}" height="26" fill="url(#beam)" style="--h:{2*r+60}px"/>
@@ -124,7 +168,7 @@ def intro():
 <g class="flick">
 <text class="d gl1" x="38" y="150" font-size="44" letter-spacing="2" fill="{RED}" opacity="0">{name}</text>
 <text class="d gl2" x="38" y="150" font-size="44" letter-spacing="2" fill="{CYAN}" opacity="0">{name}</text>
-<text class="d" x="38" y="150" font-size="44" letter-spacing="2" fill="{INK}">{letters}</text></g>
+<text class="d" x="38" y="150" font-size="44" letter-spacing="2" fill="url(#gn)" filter="url(#glow)">{letters}</text></g>
 <text class="mono" x="40" y="200" font-size="18" fill="{MUTED}">&gt;</text>{role_t}
 <text class="t" x="40" y="246" font-size="22" fill="{INK}">I build backends and LLM tools that show their work.</text>
 {chamfer(40, 266, 300, 34, 10, fill=PANEL2, stroke=CYAN, stroke_opacity=.6)}
@@ -132,7 +176,7 @@ def intro():
 <text class="mono" x="76" y="288" font-size="12" letter-spacing="1.5" fill="{INK}">OPEN TO BACKEND / LLM ROLES</text>
 {readout(358, 288, "LOC", "HYDERABAD, IN")}{readout(358, 312, "NODE", "TECHSOPHY")}
 {hologram(730, 196, 104, "hp")}
-{readout(640, 340, "ID", "TSD-077")}{readout(744, 340, "STATUS", "ONLINE", "#3dffa8")}'''
+{readout(640, 366, "ID", "TSD-077")}{readout(744, 366, "STATUS", "ONLINE", "#3dffa8")}'''
     css = (HOLO_CSS + ".l{animation:rise .4s cubic-bezier(.2,.8,.2,1) backwards}"
            "@keyframes role{0%{opacity:0}3%{opacity:1}22%{opacity:1}25%{opacity:0}100%{opacity:0}}.r{animation:role 10s linear infinite}"
            "@keyframes ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.4);opacity:0}}.ping{animation:ping 1.8s ease-out infinite}"
@@ -144,7 +188,7 @@ def intro():
 
 # ───────────── 2. status modules ─────────────
 def right_now():
-    W, H = 880, 290
+    W, H = 880, 306
     mods = [("MODULE 01", "BUILDING", ["Hospital billing &amp;", "reporting at Techsophy"], CYAN, "code"),
             ("MODULE 02", "LEARNING", ["LLM evaluation &amp;", "agent guardrails"], RED, "bulb"),
             ("MODULE 03", "READING", ["Postgres query plans", "&amp; Odoo internals"], AMBER, "book")]
@@ -153,8 +197,9 @@ def right_now():
         x, y = 32 + i * 278, 104
         cx, cy = x + 48, y + 52
         out += f'''<g class="c" style="animation-delay:{.15 + i*.2:.2f}s">
-{chamfer(x, y, 260, 156, 14, fill=PANEL, stroke=LINE)}
-{brackets(x+4, y+4, 252, 148, col, 10)}
+{chamfer(x, y, 260, 172, 14, fill=PANEL, stroke=LINE)}
+{brackets(x+4, y+4, 252, 164, col, 10)}
+<clipPath id="m{i}"><rect x="{x+20}" y="{y+152}" width="220" height="3"/></clipPath><rect x="{x+20}" y="{y+152}" width="220" height="3" fill="{LINE}"/><g clip-path="url(#m{i})"><rect class="ind" x="{x+20}" y="{y+152}" width="70" height="3" fill="{col}" filter="url(#glow)" style="animation-delay:-{i*.7:.1f}s"/></g>
 <circle cx="{cx}" cy="{cy}" r="26" fill="none" stroke="{LINE}" stroke-width="4"/>
 <circle class="spin" cx="{cx}" cy="{cy}" r="26" fill="none" stroke="{col}" stroke-width="4" stroke-dasharray="40 124" stroke-linecap="round" style="transform-origin:{cx}px {cy}px;animation-delay:-{i}s"/>
 <circle cx="{cx}" cy="{cy}" r="34" fill="none" stroke="{col}" stroke-opacity=".3" stroke-dasharray="2 5"/>
@@ -220,9 +265,10 @@ def project(slug, num, title, stack, col, lines, big, k1, k2):
 <g class="go"><text class="d5" x="728" y="178" text-anchor="middle" font-size="12" letter-spacing="2" fill="{INK}">OPEN REPO</text>{icon(I["arrow"], 784, 166, 16, col)}</g>
 <path d="M40 208 H300 l10 -10 H600" fill="none" stroke="{LINE}" stroke-width="2"/>
 <path class="trace" d="M40 208 H300 l10 -10 H600" fill="none" stroke="{col}" stroke-width="2" filter="url(#glow)"/>
-<circle cx="600" cy="198" r="4" fill="{col}"/>'''
-    css = "@keyframes go{50%{transform:translateX(5px)}}.go{animation:go 2s ease-in-out infinite}"
-    return frame(W, H, body, css)
+<path class="trace t2" d="M40 208 H300 l10 -10 H600" fill="none" stroke="#fff" stroke-width="2" stroke-opacity=".8"/>
+<circle cx="600" cy="198" r="4" fill="{col}"/>{eq(652, 214, 24, 5, 12, col)}'''
+    css = "@keyframes go{50%{transform:translateX(5px)}}.go{animation:go 2s ease-in-out infinite}.t2{stroke-dasharray:8 392;animation-duration:2.1s;animation-delay:-1s}"
+    return frame(W, H, body, css, rule=False)
 
 # ───────────── 5. holo ID card ─────────────
 def card():
@@ -239,7 +285,7 @@ def card():
 {chamfer(30, 30, 360, 540, 22, fill=PANEL, stroke="url(#holo)", stroke_width=3)}
 <text class="mono" x="52" y="64" font-size="11" letter-spacing="2" fill="{MUTED}">HOLO-ID · CLASS: DEV</text>
 <text class="mono" x="368" y="64" text-anchor="end" font-size="11" letter-spacing="2" fill="{RED}">★ RARE</text>
-{hologram(210, 192, 92, "hc")}
+{hologram(210, 196, 92, "hc", 26)}
 <text class="d" x="210" y="340" text-anchor="middle" font-size="21" letter-spacing="2" fill="{INK}">TELA SAI DHANUSH</text>
 <text class="mono" x="210" y="364" text-anchor="middle" font-size="12" letter-spacing="2" fill="{CYAN}">BACKEND · LLM TOOLING · ODOO</text>
 {chamfer(52, 380, 316, 60, 10, fill=PANEL2, stroke=LINE)}{st}
@@ -273,13 +319,15 @@ def say_hi():
     body = f'''<text class="mono" x="340" y="48" font-size="11" letter-spacing="3" fill="{CYAN}">// OPEN CHANNEL — TRANSMIT ANYTIME</text>
 <text class="d" x="340" y="84" font-size="26" letter-spacing="2" fill="{INK}">SAY HI <tspan fill="{CYAN}" class="blink">_</tspan></text>
 {rings}<line x1="{cx-R}" y1="{cy}" x2="{cx+R}" y2="{cy}" stroke="{CYAN}" stroke-opacity=".15"/><line x1="{cx}" y1="{cy-R}" x2="{cx}" y2="{cy+R}" stroke="{CYAN}" stroke-opacity=".15"/>
-{sweep}{blips}
+{sweep}{blips}{''.join(f'<circle class="pr" cx="{cx}" cy="{cy}" r="46" fill="none" stroke="{CYAN}" stroke-width="1.5" style="transform-origin:{cx}px {cy}px;animation-delay:{d}s"/>' for d in (0, 1.3))}
+<text class="mono" x="760" y="80" text-anchor="end" font-size="10" letter-spacing="2" fill="{MUTED}">TX</text>{eq(768, 84, 10, 5, 22, CYAN)}
 <image href="{PHOTO}" x="{cx-44}" y="{cy-44}" width="88" height="88" clip-path="url(#pc3)"/>
 <circle cx="{cx}" cy="{cy}" r="44" fill="none" stroke="url(#g)" stroke-width="3"/>
 <text class="mono" x="{cx}" y="{cy+R+22}" text-anchor="middle" font-size="11" letter-spacing="2" fill="{MUTED}">SIGNAL: <tspan fill="#3dffa8">STRONG</tspan></text>
 {rows}'''
     css = (".radar{animation:spin 4s linear infinite}@keyframes blip{0%,100%{opacity:.15}10%{opacity:1}40%{opacity:.15}}.blip{animation:blip 4s linear infinite}"
-           ".c{animation:rise .5s cubic-bezier(.2,.8,.2,1) backwards}")
+           ".c{animation:rise .5s cubic-bezier(.2,.8,.2,1) backwards}"
+           "@keyframes pr{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.6);opacity:0}}.pr{animation:pr 2.6s ease-out infinite}")
     return frame(W, H, body, css)
 
 files = {"intro": intro(), "right-now": right_now(), "toolkit": toolkit(), "card": card(), "say-hi": say_hi()}
