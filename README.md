@@ -1,20 +1,24 @@
-<p align="center"><img src="assets/intro.svg?v=2" alt="Tela Sai Dhanush: Backend Engineer, Python & TypeScript Developer, LLM Tooling Builder, Odoo Developer" width="100%"></p>
+<p align="center"><img src="assets/intro.svg?v=3" alt="Tela Sai Dhanush. Backend engineer, Python and TypeScript developer, LLM tooling builder, Odoo developer. I build backends and LLM tools that show their work." width="100%"></p>
 
-<p align="center"><img src="assets/right-now.svg?v=1" alt="Right now: building hospital billing and reporting systems at Techsophy, learning LLM evaluation, reading Postgres query plans" width="100%"></p>
+<p align="center"><img src="assets/right-now.svg?v=3" alt="Right now: building hospital billing and reporting at Techsophy, learning LLM evaluation and agent guardrails, reading Postgres query plans and Odoo internals" width="100%"></p>
 
-<p align="center"><img src="assets/toolkit.svg?v=1" alt="Toolkit: Python, TypeScript, Java, SQL, FastAPI, Node.js, Fastify, Spring Boot, PostgreSQL, pgvector, DuckDB, Prisma, Groq, Ollama, RAG, MCP, React, Next.js, Streamlit, Expo" width="100%"></p>
+<p align="center"><img src="assets/toolkit.svg?v=3" alt="Toolkit: Python, TypeScript, Java, SQL, FastAPI, Node.js, Fastify, Spring Boot, PostgreSQL, pgvector, DuckDB, Prisma, Groq, Ollama, RAG, MCP, React, Next.js, Streamlit, Expo" width="100%"></p>
 
-## Projects
+<p align="center">
+  <a href="https://github.com/telasaidhanush77/Debate-desk"><img src="assets/projects/debate-desk.svg?v=1" alt="Debate Desk: two AI agents debate a company's 10-K, every claim must quote the filing. $0.0041 per debate." width="100%"></a>
+  <a href="https://github.com/telasaidhanush77/lead-radar"><img src="assets/projects/lead-radar.svg?v=1" alt="Lead Radar: GTM lead pipeline with dedupe, enrichment, scoring and CRM sync. Dedupe F1 0.968." width="100%"></a>
+  <a href="https://github.com/telasaidhanush77/claimlens"><img src="assets/projects/claimlens.svg?v=1" alt="ClaimLens: know what your health insurance will pay before you're admitted. Live demo." width="100%"></a>
+</p>
 
-| Project | What it does |
-|---|---|
-| [**Debate Desk**](https://github.com/telasaidhanush77/Debate-desk) | Two AI agents argue for and against a company using only its latest SEC 10-K. Every claim must quote the filing, and the judge reads the case twice with the sides swapped. |
-| [**Lead Radar**](https://github.com/telasaidhanush77/lead-radar) | A production-style GTM pipeline: messy B2B leads get deduplicated, enriched, scored, routed and synced to a CRM idempotently, on Python and Postgres. |
-| [**ClaimLens**](https://github.com/telasaidhanush77/claimlens) | Tells you what your health insurance will pay before you're admitted, quoting the policy page and applying IRDAI rules. [Live demo](https://claimlens-07p4.onrender.com) |
+| Project | Stack | Links |
+|---|---|---|
+| **Debate Desk** | Python · Groq · SEC EDGAR · Streamlit | [Repo](https://github.com/telasaidhanush77/Debate-desk) |
+| **Lead Radar** | Python · PostgreSQL · FastAPI | [Repo](https://github.com/telasaidhanush77/lead-radar) |
+| **ClaimLens** | FastAPI · pgvector · Next.js | [Repo](https://github.com/telasaidhanush77/claimlens) · [Live demo](https://claimlens-07p4.onrender.com) |
 
-<p align="center"><img src="assets/card.svg?v=2" alt="Dev card: Tela Sai Dhanush. 2nd place at HITAM XPLORE, B.Tech CSE (AI & ML) 2026, each Debate Desk run costs $0.0041" width="380"></p>
+<p align="center"><img src="assets/card.svg?v=3" alt="Dev card: Tela Sai Dhanush. 6 public repos, 4 languages, 3 internships. 2nd place at HITAM XPLORE, B.Tech CSE (AI and ML) 2026." width="400"></p>
 
-<p align="center"><img src="assets/say-hi.svg?v=1" alt="Say hi" width="100%"></p>
+<p align="center"><img src="assets/say-hi.svg?v=3" alt="Say hi" width="100%"></p>
 
 <p align="center">
   <a href="https://github.com/telasaidhanush77">GitHub</a> ·
