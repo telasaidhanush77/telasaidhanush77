@@ -6,10 +6,9 @@ OUT, PHOTO_P, FONTS = map(pathlib.Path, sys.argv[1:4])
 (OUT / "projects").mkdir(parents=True, exist_ok=True)
 
 BG, PANEL, PANEL2 = "#04060d", "#0a1122", "#0f1930"
-BLUE, CYAN, RED, AMBER = "#247bff", "#3fd8ff", "#ff354f", "#ffb547"
+BLUE, CYAN, RED, AMBER = "#2f7bff", "#00e5ff", "#ff1f4b", "#ffc400"
 INK, MUTED, LINE = "#eaf2ff", "#8796b4", "#1b2a4c"
-VIOLET, PINK, GREEN = "#9b5cff", "#ff4fd8", "#3dffa8"
-RAINBOW = [CYAN, BLUE, VIOLET, PINK, RED, AMBER, GREEN]
+VIOLET, PINK, GREEN = "#2448ff", "#ff1f4b", "#ff7a1a"  # royal blue, crimson, orange — bold, no rainbow
 b64 = lambda p: base64.b64encode(p.read_bytes()).decode()
 PHOTO = "data:image/jpeg;base64," + b64(PHOTO_P)
 FACES = {"or700": ("OR", 700), "or500": ("OR", 500), "rj600": ("RJ", 600), "jb400": ("JB", 400)}
@@ -53,11 +52,11 @@ def frame(w, h, body, css="", title=None, tag=None, rule=True, hues=(BLUE, RED))
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img">
 <defs>
 <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{CYAN}"/><stop offset=".5" stop-color="{BLUE}"/><stop offset="1" stop-color="{RED}"/></linearGradient>
-<linearGradient id="gi" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{CYAN}"/><stop offset=".35" stop-color="{VIOLET}"/><stop offset=".7" stop-color="{PINK}"/><stop offset="1" stop-color="{AMBER}"/></linearGradient>
-<linearGradient id="gn" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{CYAN}"/><stop offset=".45" stop-color="{VIOLET}"/><stop offset=".8" stop-color="{PINK}"/><stop offset="1" stop-color="{AMBER}"/></linearGradient>
+<linearGradient id="gi" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{CYAN}"/><stop offset=".5" stop-color="{BLUE}"/><stop offset="1" stop-color="{RED}"/></linearGradient>
+<linearGradient id="gn" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{CYAN}"/><stop offset=".5" stop-color="{BLUE}"/><stop offset="1" stop-color="{RED}"/></linearGradient>
 <linearGradient id="gh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{CYAN}"/><stop offset="1" stop-color="{BLUE}"/></linearGradient>
-<radialGradient id="gb"><stop offset="0" stop-color="{hues[0]}" stop-opacity=".34"/><stop offset="1" stop-color="{hues[0]}" stop-opacity="0"/></radialGradient>
-<radialGradient id="gr"><stop offset="0" stop-color="{hues[1]}" stop-opacity=".26"/><stop offset="1" stop-color="{hues[1]}" stop-opacity="0"/></radialGradient>
+<radialGradient id="gb"><stop offset="0" stop-color="{hues[0]}" stop-opacity=".42"/><stop offset="1" stop-color="{hues[0]}" stop-opacity="0"/></radialGradient>
+<radialGradient id="gr"><stop offset="0" stop-color="{hues[1]}" stop-opacity=".32"/><stop offset="1" stop-color="{hues[1]}" stop-opacity="0"/></radialGradient>
 <radialGradient id="gv"><stop offset="0" stop-color="{VIOLET}" stop-opacity=".14"/><stop offset="1" stop-color="{VIOLET}" stop-opacity="0"/></radialGradient>
 <radialGradient id="halo"><stop offset="0" stop-color="{VIOLET}" stop-opacity=".55"/><stop offset=".6" stop-color="{BLUE}" stop-opacity=".2"/><stop offset="1" stop-color="{BLUE}" stop-opacity="0"/></radialGradient>
 <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#0e1834" stroke-width="1"/></pattern>
@@ -90,7 +89,7 @@ def globe(cx, cy, R, col=CYAN, op=.3):
 
 def eq(x, y, n, w, h, col, gap=3):
     """Decorative equalizer bars, bottom-anchored."""
-    return "".join(f'<rect class="eq" x="{x + i*(w+gap)}" y="{y - h}" width="{w}" height="{h}" fill="{RAINBOW[(i + RAINBOW.index(col) if col in RAINBOW else i) % 7]}" opacity=".85" '
+    return "".join(f'<rect class="eq" x="{x + i*(w+gap)}" y="{y - h}" width="{w}" height="{h}" fill="{col}" opacity=".85" '
                    f'style="transform-origin:{x + i*(w+gap)}px {y}px;animation-delay:-{(i*0.37) % 1.2:.2f}s;animation-duration:{0.9 + (i*7 % 5)*0.15:.2f}s"/>' for i in range(n))
 
 def icon(paths, x, y, size, col):
@@ -155,7 +154,7 @@ def intro():
     name = "TELA SAI DHANUSH"
     letters = "".join(f'<tspan class="l" style="animation-delay:{.25 + i*.045:.2f}s">{c if c != " " else "&#160;"}</tspan>' for i, c in enumerate(name))
     roles = ["BACKEND ENGINEER", "PYTHON + TYPESCRIPT DEV", "LLM TOOLING BUILDER", "ODOO DEVELOPER"]
-    role_t = "".join(f'<g class="r" style="opacity:{1 if i == 0 else 0};animation-delay:{i*2.5}s"><text class="d5" x="70" y="200" font-size="19" letter-spacing="3" fill="{[CYAN, PINK, AMBER, GREEN][i]}">{r}<tspan class="blink" fill="{INK}">_</tspan></text></g>' for i, r in enumerate(roles))
+    role_t = "".join(f'<g class="r" style="opacity:{1 if i == 0 else 0};animation-delay:{i*2.5}s"><text class="d5" x="70" y="200" font-size="19" letter-spacing="3" fill="{[CYAN, RED, AMBER, CYAN][i]}">{r}<tspan class="blink" fill="{INK}">_</tspan></text></g>' for i, r in enumerate(roles))
     body = f'''{BEAM_DEF}{floor}
 <text class="mono" x="40" y="48" font-size="11" letter-spacing="3" fill="{CYAN}">// IDENT.SYS — PROFILE LOADED</text>
 {readout(560, 48, "UPLINK", "STABLE")}{readout(690, 48, "BUILD", "2026.11")}
@@ -204,14 +203,14 @@ def right_now():
 <text class="t" x="{x+20}" y="{y+116}" font-size="19" fill="{INK}">{lines[0]}</text>
 <text class="t" x="{x+20}" y="{y+139}" font-size="19" fill="{INK}">{lines[1]}</text></g>'''
     css = ".c{animation:rise .6s cubic-bezier(.2,.8,.2,1) backwards}.spin{animation:spin 2.4s linear infinite}"
-    return frame(W, H, out, css, "SYSTEM STATUS", "// ACTIVE PROCESSES — UPDATED NOV 2026", hues=(CYAN, PINK))
+    return frame(W, H, out, css, "SYSTEM STATUS", "// ACTIVE PROCESSES — UPDATED NOV 2026", hues=(CYAN, RED))
 
 # ───────────── 3. arsenal (honeycomb) ─────────────
 def toolkit():
     W, H = 880, 400
     groups = [("LANG", CYAN, ["Python", "TypeScript", "Java", "SQL"]), ("BACKEND", BLUE, ["FastAPI", "Node.js", "Fastify", "Spring Boot"]),
               ("DATA", AMBER, ["PostgreSQL", "pgvector", "DuckDB", "Prisma"]), ("AI / LLM", RED, ["Groq", "Ollama", "RAG", "MCP"]),
-              ("FRONTEND", "#3dffa8", ["React", "Next.js", "Streamlit", "Expo"])]
+              ("FRONTEND", GREEN, ["React", "Next.js", "Streamlit", "Expo"])]
     tiles = [(k, col) for _, col, ks in groups for k in ks]
     r, rows = 46, [7, 6, 7]
     dx, dy = r * math.sqrt(3) + 6, r * 1.5 + 5
@@ -231,7 +230,7 @@ def toolkit():
                      f'<rect x="44" y="{126 + i*52}" width="12" height="12" fill="{col}" transform="rotate(45 50 {132 + i*52})"/>'
                      f'<text class="mono" x="68" y="{137 + i*52}" font-size="12" letter-spacing="2" fill="{INK}">{lab}</text>' for i, (lab, col, _) in enumerate(groups))
     css = "@keyframes lit{0%,100%{opacity:0}8%{opacity:1}22%{opacity:0}}.lit{opacity:0;animation:lit 4s ease-in-out infinite}"
-    return frame(W, H, legend + "".join(out), css, "ARSENAL", "// LOADOUT — 20 MODULES INSTALLED", hues=(VIOLET, GREEN))
+    return frame(W, H, legend + "".join(out), css, "ARSENAL", "// LOADOUT — 20 MODULES INSTALLED", hues=(BLUE, AMBER))
 
 # ───────────── 4. mission log ─────────────
 PROJECTS = [
@@ -275,7 +274,7 @@ def card():
     ft = "".join(f'<rect x="56" y="{476 + i*30}" width="8" height="8" fill="{[CYAN, RED, AMBER][i]}" transform="rotate(45 60 {480 + i*30})"/>'
                  f'<text class="t" x="76" y="{486 + i*30}" font-size="17" fill="{INK}">{f}</text>' for i, f in enumerate(facts))
     body = f'''{BEAM_DEF}<defs><linearGradient id="holo" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="{CYAN}"/><stop offset=".35" stop-color="{VIOLET}"/><stop offset=".7" stop-color="{PINK}"/><stop offset="1" stop-color="{AMBER}"/></linearGradient>
+<stop offset="0" stop-color="{CYAN}"/><stop offset=".5" stop-color="{BLUE}"/><stop offset="1" stop-color="{RED}"/></linearGradient>
 <clipPath id="cc">{chamfer(30, 30, 360, 540, 22)}</clipPath></defs>
 {chamfer(30, 30, 360, 540, 22, fill=PANEL, stroke="url(#holo)", stroke_width=3)}
 <text class="mono" x="52" y="64" font-size="11" letter-spacing="2" fill="{MUTED}">HOLO-ID · CLASS: DEV</text>
@@ -289,7 +288,7 @@ def card():
     css = (HOLO_CSS + "@keyframes shine{0%{transform:skewX(-20deg) translateX(0)}45%,100%{transform:skewX(-20deg) translateX(880px)}}.shine{animation:shine 5s ease-in-out infinite}"
            f"@keyframes h{{0%,100%{{stop-color:{CYAN}}}50%{{stop-color:{RED}}}}}@keyframes hr{{0%,100%{{stop-color:{RED}}}50%{{stop-color:{CYAN}}}}}"
            ".h1{animation:h 6s ease-in-out infinite}.h3{animation:hr 6s ease-in-out infinite}")
-    return frame(W, H, body, css, hues=(PINK, CYAN))
+    return frame(W, H, body, css, hues=(RED, CYAN))
 
 # ───────────── 6. open channel (radar) ─────────────
 def say_hi():
@@ -297,7 +296,7 @@ def say_hi():
     cx, cy, R = 170, 186, 118
     rings = "".join(f'<circle cx="{cx}" cy="{cy}" r="{R*f:.0f}" fill="none" stroke="{CYAN}" stroke-opacity=".25"/>' for f in (1, .72, .44))
     links = [("github", "GITHUB", "github.com/telasaidhanush77", CYAN), ("linkedin", "LINKEDIN", "linkedin.com/in/saidhanush-st", RED),
-             ("globe", "PORTFOLIO", "sai-dhanush-dev.netlify.app", AMBER), ("mail", "EMAIL", "telasaidhanush77@gmail.com", "#3dffa8")]
+             ("globe", "PORTFOLIO", "sai-dhanush-dev.netlify.app", AMBER), ("mail", "EMAIL", "telasaidhanush77@gmail.com", BLUE)]
     rows = ""
     for i, (ic, lab, url, col) in enumerate(links):
         y = 108 + i * 52
@@ -310,7 +309,7 @@ def say_hi():
              f'<g class="radar" style="transform-origin:{cx}px {cy}px"><path d="M{cx} {cy} L{cx+R} {cy} A{R} {R} 0 0 0 {cx + R*math.cos(math.radians(-50)):.1f} {cy + R*math.sin(math.radians(-50)):.1f} Z" fill="url(#sw)"/>'
              f'<line x1="{cx}" y1="{cy}" x2="{cx+R}" y2="{cy}" stroke="{CYAN}" stroke-width="2.5"/></g>')
     blips = "".join(f'<circle class="blip" cx="{cx + R*f*math.cos(math.radians(a)):.0f}" cy="{cy + R*f*math.sin(math.radians(a)):.0f}" r="4" fill="{col}" style="animation-delay:{d}s"/>'
-                    for f, a, col, d in [(.8, -30, RED, 0), (.6, 120, AMBER, 1.2), (.9, 210, "#3dffa8", 2.1)])
+                    for f, a, col, d in [(.8, -30, RED, 0), (.6, 120, AMBER, 1.2), (.9, 210, CYAN, 2.1)])
     body = f'''<text class="mono" x="340" y="48" font-size="11" letter-spacing="3" fill="{CYAN}">// OPEN CHANNEL — TRANSMIT ANYTIME</text>
 <text class="d" x="340" y="84" font-size="26" letter-spacing="2" fill="{INK}">SAY HI <tspan fill="{CYAN}" class="blink">_</tspan></text>
 {rings}<line x1="{cx-R}" y1="{cy}" x2="{cx+R}" y2="{cy}" stroke="{CYAN}" stroke-opacity=".15"/><line x1="{cx}" y1="{cy-R}" x2="{cx}" y2="{cy+R}" stroke="{CYAN}" stroke-opacity=".15"/>
@@ -323,7 +322,7 @@ def say_hi():
     css = (".radar{animation:spin 4s linear infinite}@keyframes blip{0%,100%{opacity:.15}10%{opacity:1}40%{opacity:.15}}.blip{animation:blip 4s linear infinite}"
            ".c{animation:rise .5s cubic-bezier(.2,.8,.2,1) backwards}"
            "@keyframes pr{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.6);opacity:0}}.pr{animation:pr 2.6s ease-out infinite}")
-    return frame(W, H, body, css, hues=(GREEN, BLUE))
+    return frame(W, H, body, css, hues=(BLUE, RED))
 
 files = {"intro": intro(), "right-now": right_now(), "toolkit": toolkit(), "card": card(), "say-hi": say_hi()}
 files.update({f"projects/{p[0]}": project(*p) for p in PROJECTS})

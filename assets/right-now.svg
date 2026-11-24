@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="880" height="306" viewBox="0 0 880 306" role="img">
 <defs>
-<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3fd8ff"/><stop offset=".5" stop-color="#247bff"/><stop offset="1" stop-color="#ff354f"/></linearGradient>
-<linearGradient id="gi" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3fd8ff"/><stop offset=".35" stop-color="#9b5cff"/><stop offset=".7" stop-color="#ff4fd8"/><stop offset="1" stop-color="#ffb547"/></linearGradient>
-<linearGradient id="gn" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3fd8ff"/><stop offset=".45" stop-color="#9b5cff"/><stop offset=".8" stop-color="#ff4fd8"/><stop offset="1" stop-color="#ffb547"/></linearGradient>
-<linearGradient id="gh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3fd8ff"/><stop offset="1" stop-color="#247bff"/></linearGradient>
-<radialGradient id="gb"><stop offset="0" stop-color="#3fd8ff" stop-opacity=".34"/><stop offset="1" stop-color="#3fd8ff" stop-opacity="0"/></radialGradient>
-<radialGradient id="gr"><stop offset="0" stop-color="#ff4fd8" stop-opacity=".26"/><stop offset="1" stop-color="#ff4fd8" stop-opacity="0"/></radialGradient>
-<radialGradient id="gv"><stop offset="0" stop-color="#9b5cff" stop-opacity=".14"/><stop offset="1" stop-color="#9b5cff" stop-opacity="0"/></radialGradient>
-<radialGradient id="halo"><stop offset="0" stop-color="#9b5cff" stop-opacity=".55"/><stop offset=".6" stop-color="#247bff" stop-opacity=".2"/><stop offset="1" stop-color="#247bff" stop-opacity="0"/></radialGradient>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e5ff"/><stop offset=".5" stop-color="#2f7bff"/><stop offset="1" stop-color="#ff1f4b"/></linearGradient>
+<linearGradient id="gi" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e5ff"/><stop offset=".5" stop-color="#2f7bff"/><stop offset="1" stop-color="#ff1f4b"/></linearGradient>
+<linearGradient id="gn" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00e5ff"/><stop offset=".5" stop-color="#2f7bff"/><stop offset="1" stop-color="#ff1f4b"/></linearGradient>
+<linearGradient id="gh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00e5ff"/><stop offset="1" stop-color="#2f7bff"/></linearGradient>
+<radialGradient id="gb"><stop offset="0" stop-color="#00e5ff" stop-opacity=".42"/><stop offset="1" stop-color="#00e5ff" stop-opacity="0"/></radialGradient>
+<radialGradient id="gr"><stop offset="0" stop-color="#ff1f4b" stop-opacity=".32"/><stop offset="1" stop-color="#ff1f4b" stop-opacity="0"/></radialGradient>
+<radialGradient id="gv"><stop offset="0" stop-color="#2448ff" stop-opacity=".14"/><stop offset="1" stop-color="#2448ff" stop-opacity="0"/></radialGradient>
+<radialGradient id="halo"><stop offset="0" stop-color="#2448ff" stop-opacity=".55"/><stop offset=".6" stop-color="#2f7bff" stop-opacity=".2"/><stop offset="1" stop-color="#2f7bff" stop-opacity="0"/></radialGradient>
 <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#0e1834" stroke-width="1"/></pattern>
 <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1.4" fill="#000" opacity=".35"/></pattern>
 <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
@@ -18,39 +18,39 @@
 <circle cx="132" cy="0" r="291" fill="url(#gb)"/><circle cx="792" cy="306" r="291" fill="url(#gr)"/><circle cx="528" cy="31" r="184" fill="url(#gv)"/>
 </g>
 <polygon points="26,1 879,1 879,280 854,305 1,305 1,26" fill="none" stroke="url(#gi)" stroke-width="2" stroke-opacity="0.9"/>
-<path d="M10,24V10H24 M856,10H870V24 M870,282V296H856 M24,296H10V282" fill="none" stroke="#3fd8ff" stroke-width="2"/>
-<path d="M44,291v-6M60,291v-3M76,291v-3M92,291v-3M108,291v-3M124,291v-6M140,291v-3M156,291v-3M172,291v-3M188,291v-3M204,291v-6M220,291v-3M236,291v-3M252,291v-3M268,291v-3M284,291v-6M300,291v-3M316,291v-3M332,291v-3M348,291v-3M364,291v-6M380,291v-3M396,291v-3M412,291v-3M428,291v-3M444,291v-6M460,291v-3M476,291v-3M492,291v-3M508,291v-3M524,291v-6M540,291v-3M556,291v-3M572,291v-3M588,291v-3M604,291v-6M620,291v-3M636,291v-3M652,291v-3M668,291v-3M684,291v-6M700,291v-3M716,291v-3M732,291v-3M748,291v-3M764,291v-6M780,291v-3M796,291v-3M812,291v-3M828,291v-3" stroke="#3fd8ff" stroke-opacity=".35" stroke-width="1"/><path class="tick" d="M44,281l5,6 5,-6z" fill="#3fd8ff" style="--tw:782px"/>
-<text class="mono" x="32" y="40" font-size="12" letter-spacing="3" fill="#3fd8ff">// ACTIVE PROCESSES — UPDATED NOV 2026</text><text class="d" x="32" y="70" font-size="24" letter-spacing="2" fill="url(#gn)">SYSTEM STATUS</text><line x1="32" y1="84" x2="848" y2="84" stroke="#1b2a4c"/><line class="sweep" x1="32" y1="84" x2="152" y2="84" stroke="url(#gn)" stroke-width="2"/><g class="c" style="animation-delay:0.15s">
-<polygon points="46,104 292,104 292,262 278,276 32,276 32,118" fill="#0a1122" stroke="#3fd8ff" stroke-opacity="0.35"/><polygon points="46,104 292,104 292,262 278,276 32,276 32,118" fill="#3fd8ff" fill-opacity="0.07"/>
-<path d="M36,118V108H46 M278,108H288V118 M288,262V272H278 M46,272H36V262" fill="none" stroke="#3fd8ff" stroke-width="2"/>
-<clipPath id="m0"><rect x="52" y="256" width="220" height="3"/></clipPath><rect x="52" y="256" width="220" height="3" fill="#1b2a4c"/><g clip-path="url(#m0)"><rect class="ind" x="52" y="256" width="70" height="3" fill="#3fd8ff" style="animation-delay:-0.0s"/></g>
+<path d="M10,24V10H24 M856,10H870V24 M870,282V296H856 M24,296H10V282" fill="none" stroke="#00e5ff" stroke-width="2"/>
+<path d="M44,291v-6M60,291v-3M76,291v-3M92,291v-3M108,291v-3M124,291v-6M140,291v-3M156,291v-3M172,291v-3M188,291v-3M204,291v-6M220,291v-3M236,291v-3M252,291v-3M268,291v-3M284,291v-6M300,291v-3M316,291v-3M332,291v-3M348,291v-3M364,291v-6M380,291v-3M396,291v-3M412,291v-3M428,291v-3M444,291v-6M460,291v-3M476,291v-3M492,291v-3M508,291v-3M524,291v-6M540,291v-3M556,291v-3M572,291v-3M588,291v-3M604,291v-6M620,291v-3M636,291v-3M652,291v-3M668,291v-3M684,291v-6M700,291v-3M716,291v-3M732,291v-3M748,291v-3M764,291v-6M780,291v-3M796,291v-3M812,291v-3M828,291v-3" stroke="#00e5ff" stroke-opacity=".35" stroke-width="1"/><path class="tick" d="M44,281l5,6 5,-6z" fill="#00e5ff" style="--tw:782px"/>
+<text class="mono" x="32" y="40" font-size="12" letter-spacing="3" fill="#00e5ff">// ACTIVE PROCESSES — UPDATED NOV 2026</text><text class="d" x="32" y="70" font-size="24" letter-spacing="2" fill="url(#gn)">SYSTEM STATUS</text><line x1="32" y1="84" x2="848" y2="84" stroke="#1b2a4c"/><line class="sweep" x1="32" y1="84" x2="152" y2="84" stroke="url(#gn)" stroke-width="2"/><g class="c" style="animation-delay:0.15s">
+<polygon points="46,104 292,104 292,262 278,276 32,276 32,118" fill="#0a1122" stroke="#00e5ff" stroke-opacity="0.35"/><polygon points="46,104 292,104 292,262 278,276 32,276 32,118" fill="#00e5ff" fill-opacity="0.07"/>
+<path d="M36,118V108H46 M278,108H288V118 M288,262V272H278 M46,272H36V262" fill="none" stroke="#00e5ff" stroke-width="2"/>
+<clipPath id="m0"><rect x="52" y="256" width="220" height="3"/></clipPath><rect x="52" y="256" width="220" height="3" fill="#1b2a4c"/><g clip-path="url(#m0)"><rect class="ind" x="52" y="256" width="70" height="3" fill="#00e5ff" style="animation-delay:-0.0s"/></g>
 <circle cx="80" cy="156" r="26" fill="none" stroke="#1b2a4c" stroke-width="4"/>
-<circle class="spin" cx="80" cy="156" r="26" fill="none" stroke="#3fd8ff" stroke-width="4" stroke-dasharray="40 124" stroke-linecap="round" style="transform-origin:80px 156px;animation-delay:-0s"/>
-<circle cx="80" cy="156" r="34" fill="none" stroke="#3fd8ff" stroke-opacity=".3" stroke-dasharray="2 5"/>
-<g transform="translate(69 145) scale(0.917)" fill="none" stroke="#3fd8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></g>
+<circle class="spin" cx="80" cy="156" r="26" fill="none" stroke="#00e5ff" stroke-width="4" stroke-dasharray="40 124" stroke-linecap="round" style="transform-origin:80px 156px;animation-delay:-0s"/>
+<circle cx="80" cy="156" r="34" fill="none" stroke="#00e5ff" stroke-opacity=".3" stroke-dasharray="2 5"/>
+<g transform="translate(69 145) scale(0.917)" fill="none" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></g>
 <text class="mono" x="124" y="146" font-size="11" letter-spacing="2" fill="#8796b4">MODULE 01</text>
-<text class="d" x="124" y="170" font-size="16" letter-spacing="2" fill="#3fd8ff" filter="url(#glow)">BUILDING</text>
+<text class="d" x="124" y="170" font-size="16" letter-spacing="2" fill="#00e5ff" filter="url(#glow)">BUILDING</text>
 <text class="t" x="52" y="220" font-size="19" fill="#eaf2ff">Hospital billing &amp;</text>
 <text class="t" x="52" y="243" font-size="19" fill="#eaf2ff">reporting at Techsophy</text></g><g class="c" style="animation-delay:0.35s">
-<polygon points="324,104 570,104 570,262 556,276 310,276 310,118" fill="#0a1122" stroke="#ff354f" stroke-opacity="0.35"/><polygon points="324,104 570,104 570,262 556,276 310,276 310,118" fill="#ff354f" fill-opacity="0.07"/>
-<path d="M314,118V108H324 M556,108H566V118 M566,262V272H556 M324,272H314V262" fill="none" stroke="#ff354f" stroke-width="2"/>
-<clipPath id="m1"><rect x="330" y="256" width="220" height="3"/></clipPath><rect x="330" y="256" width="220" height="3" fill="#1b2a4c"/><g clip-path="url(#m1)"><rect class="ind" x="330" y="256" width="70" height="3" fill="#ff354f" style="animation-delay:-0.7s"/></g>
+<polygon points="324,104 570,104 570,262 556,276 310,276 310,118" fill="#0a1122" stroke="#ff1f4b" stroke-opacity="0.35"/><polygon points="324,104 570,104 570,262 556,276 310,276 310,118" fill="#ff1f4b" fill-opacity="0.07"/>
+<path d="M314,118V108H324 M556,108H566V118 M566,262V272H556 M324,272H314V262" fill="none" stroke="#ff1f4b" stroke-width="2"/>
+<clipPath id="m1"><rect x="330" y="256" width="220" height="3"/></clipPath><rect x="330" y="256" width="220" height="3" fill="#1b2a4c"/><g clip-path="url(#m1)"><rect class="ind" x="330" y="256" width="70" height="3" fill="#ff1f4b" style="animation-delay:-0.7s"/></g>
 <circle cx="358" cy="156" r="26" fill="none" stroke="#1b2a4c" stroke-width="4"/>
-<circle class="spin" cx="358" cy="156" r="26" fill="none" stroke="#ff354f" stroke-width="4" stroke-dasharray="40 124" stroke-linecap="round" style="transform-origin:358px 156px;animation-delay:-1s"/>
-<circle cx="358" cy="156" r="34" fill="none" stroke="#ff354f" stroke-opacity=".3" stroke-dasharray="2 5"/>
-<g transform="translate(347 145) scale(0.917)" fill="none" stroke="#ff354f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></g>
+<circle class="spin" cx="358" cy="156" r="26" fill="none" stroke="#ff1f4b" stroke-width="4" stroke-dasharray="40 124" stroke-linecap="round" style="transform-origin:358px 156px;animation-delay:-1s"/>
+<circle cx="358" cy="156" r="34" fill="none" stroke="#ff1f4b" stroke-opacity=".3" stroke-dasharray="2 5"/>
+<g transform="translate(347 145) scale(0.917)" fill="none" stroke="#ff1f4b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></g>
 <text class="mono" x="402" y="146" font-size="11" letter-spacing="2" fill="#8796b4">MODULE 02</text>
-<text class="d" x="402" y="170" font-size="16" letter-spacing="2" fill="#ff354f" filter="url(#glow)">LEARNING</text>
+<text class="d" x="402" y="170" font-size="16" letter-spacing="2" fill="#ff1f4b" filter="url(#glow)">LEARNING</text>
 <text class="t" x="330" y="220" font-size="19" fill="#eaf2ff">LLM evaluation &amp;</text>
 <text class="t" x="330" y="243" font-size="19" fill="#eaf2ff">agent guardrails</text></g><g class="c" style="animation-delay:0.55s">
-<polygon points="602,104 848,104 848,262 834,276 588,276 588,118" fill="#0a1122" stroke="#ffb547" stroke-opacity="0.35"/><polygon points="602,104 848,104 848,262 834,276 588,276 588,118" fill="#ffb547" fill-opacity="0.07"/>
-<path d="M592,118V108H602 M834,108H844V118 M844,262V272H834 M602,272H592V262" fill="none" stroke="#ffb547" stroke-width="2"/>
-<clipPath id="m2"><rect x="608" y="256" width="220" height="3"/></clipPath><rect x="608" y="256" width="220" height="3" fill="#1b2a4c"/><g clip-path="url(#m2)"><rect class="ind" x="608" y="256" width="70" height="3" fill="#ffb547" style="animation-delay:-1.4s"/></g>
+<polygon points="602,104 848,104 848,262 834,276 588,276 588,118" fill="#0a1122" stroke="#ffc400" stroke-opacity="0.35"/><polygon points="602,104 848,104 848,262 834,276 588,276 588,118" fill="#ffc400" fill-opacity="0.07"/>
+<path d="M592,118V108H602 M834,108H844V118 M844,262V272H834 M602,272H592V262" fill="none" stroke="#ffc400" stroke-width="2"/>
+<clipPath id="m2"><rect x="608" y="256" width="220" height="3"/></clipPath><rect x="608" y="256" width="220" height="3" fill="#1b2a4c"/><g clip-path="url(#m2)"><rect class="ind" x="608" y="256" width="70" height="3" fill="#ffc400" style="animation-delay:-1.4s"/></g>
 <circle cx="636" cy="156" r="26" fill="none" stroke="#1b2a4c" stroke-width="4"/>
-<circle class="spin" cx="636" cy="156" r="26" fill="none" stroke="#ffb547" stroke-width="4" stroke-dasharray="40 124" stroke-linecap="round" style="transform-origin:636px 156px;animation-delay:-2s"/>
-<circle cx="636" cy="156" r="34" fill="none" stroke="#ffb547" stroke-opacity=".3" stroke-dasharray="2 5"/>
-<g transform="translate(625 145) scale(0.917)" fill="none" stroke="#ffb547" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></g>
+<circle class="spin" cx="636" cy="156" r="26" fill="none" stroke="#ffc400" stroke-width="4" stroke-dasharray="40 124" stroke-linecap="round" style="transform-origin:636px 156px;animation-delay:-2s"/>
+<circle cx="636" cy="156" r="34" fill="none" stroke="#ffc400" stroke-opacity=".3" stroke-dasharray="2 5"/>
+<g transform="translate(625 145) scale(0.917)" fill="none" stroke="#ffc400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></g>
 <text class="mono" x="680" y="146" font-size="11" letter-spacing="2" fill="#8796b4">MODULE 03</text>
-<text class="d" x="680" y="170" font-size="16" letter-spacing="2" fill="#ffb547" filter="url(#glow)">READING</text>
+<text class="d" x="680" y="170" font-size="16" letter-spacing="2" fill="#ffc400" filter="url(#glow)">READING</text>
 <text class="t" x="608" y="220" font-size="19" fill="#eaf2ff">Postgres query plans</text>
 <text class="t" x="608" y="243" font-size="19" fill="#eaf2ff">&amp; Odoo internals</text></g></svg>
