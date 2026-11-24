@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/intro.svg?v=1" alt="Tela Sai Dhanush: Backend Engineer, Python & TypeScript Developer, LLM Tooling Builder, Odoo Developer" width="100%"></p>
+<p align="center"><img src="assets/intro.svg?v=2" alt="Tela Sai Dhanush: Backend Engineer, Python & TypeScript Developer, LLM Tooling Builder, Odoo Developer" width="100%"></p>
 
 <p align="center"><img src="assets/right-now.svg?v=1" alt="Right now: building hospital billing and reporting systems at Techsophy, learning LLM evaluation, reading Postgres query plans" width="100%"></p>
 
@@ -12,7 +12,7 @@
 | [**Lead Radar**](https://github.com/telasaidhanush77/lead-radar) | A production-style GTM pipeline: messy B2B leads get deduplicated, enriched, scored, routed and synced to a CRM idempotently, on Python and Postgres. |
 | [**ClaimLens**](https://github.com/telasaidhanush77/claimlens) | Tells you what your health insurance will pay before you're admitted, quoting the policy page and applying IRDAI rules. [Live demo](https://claimlens-07p4.onrender.com) |
 
-<p align="center"><img src="assets/card.svg?v=1" alt="Dev card: Tela Sai Dhanush. 2nd place at HITAM XPLORE, B.Tech CSE (AI & ML) 2026, each Debate Desk run costs $0.0041" width="380"></p>
+<p align="center"><img src="assets/card.svg?v=2" alt="Dev card: Tela Sai Dhanush. 2nd place at HITAM XPLORE, B.Tech CSE (AI & ML) 2026, each Debate Desk run costs $0.0041" width="380"></p>
 
 <p align="center"><img src="assets/say-hi.svg?v=1" alt="Say hi" width="100%"></p>
 
